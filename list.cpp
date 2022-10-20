@@ -15,34 +15,29 @@ struct Students {
   float gpa;
 };
 
-
-void READ () {
-  Students roll;
+void READ (int& i, Students roll[10]) {
+  //Students roll[i];
+  i = 1;
 
   cout << "First name?" << endl;
-  cin >> roll.FirstName;
+  cin >> roll[i].FirstName;
   cout << "Last name?" << endl;
-  cin >> roll.LastName;
+  cin >> roll[i].LastName;
   cout << "GPA?" << endl;
-  cin >> roll.gpa;
+  cin >> roll[i].gpa;
   cout << "ID?" << endl;
-  cin >> roll.id;
+  cin >> roll[i].id;
   cout << "------------------------------------------------------" << endl;
-  cout << roll.FirstName << " " << roll.LastName << " has been registered." << endl;
+  cout << roll[i].FirstName << " " << roll[i].LastName << " has been registered." << endl;
 
-  cout << "ID: " << roll.id << endl;
-  cout << "GPA: " << roll.gpa << endl;
+  cout << "ID: " << roll[i].id << endl;
+  cout << "GPA: " << roll[i].gpa << endl;
 }
 
 int main() {
-  //Students george;
-  //cin >> george.FirstName;
-  //cin >> george.LastName;
-  //george.id = 1234;
-  //george.gpa = 3.1;
-  //cout << george.FirstName << " " << george.LastName << " ID: " << george.id << " GPA: ";
-  //cout << george.gpa << endl;
-   
+  int count = 0;
+  int& i = count;
+  Students roll[10];
   
-  READ();
+  READ(i, roll);
 }
