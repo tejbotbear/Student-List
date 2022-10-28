@@ -43,7 +43,7 @@ void ACTION(int& i, vector<Student*> &v, Student *s) {
       
     }
     else if (Input == 'a') {
-      i++;
+      i
       ADD(i, v, s);
       Valid = true;
     }
@@ -51,7 +51,6 @@ void ACTION(int& i, vector<Student*> &v, Student *s) {
 }
 
 void ADD(int& i, vector<Student*> &v, Student *s) {
-  v.push_back(s);
   cout << "First name?" << endl;
   cin >> (*s).FirstName;
   cout << "Last name?" << endl;
@@ -65,7 +64,7 @@ void ADD(int& i, vector<Student*> &v, Student *s) {
   cout << "ID: " << (*s).id << endl;
   cout << "GPA: " << (*s).gpa << endl;
   cout << "----------------------------------------------" << endl;
-  //v.push_back(s);
+  v.push_back(s);
   ACTION(i, v, s);
 }
 
