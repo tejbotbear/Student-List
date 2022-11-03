@@ -16,6 +16,7 @@ struct Student {
   float gpa;
 };
 
+void DELETE(int& i, vector<Student*> &v, Student *s);
 void ADD(int& i,vector<Student*> &v, Student *s);
 
 void ACTION(int& i, vector<Student*> &v, Student *s) {
@@ -40,15 +41,45 @@ void ACTION(int& i, vector<Student*> &v, Student *s) {
       }
     }
     else if (Input == 'd') {
-      
+      DELETE(i, v, s);
     }
     else if (Input == 'a') {
-      i
-      ADD(i, v, s);
+      Student *NewStudent = new Student();
+      ++i;
+      ADD(i, v, NewStudent);
       Valid = true;
     }
   } while (Valid == false);
 }
+
+
+void DELETE(int& i, vector<Student*> &v, Student *s) {
+
+  int DeleteID;
+  char ConfirmDelete[6];// = {' ', ' ', ' ', ' ', ' ', ' '};
+  char ref[6] = {'D', 'E', 'L', 'E', 'T', 'E'};
+  cout << "Enter the ID of the student's data you are trying to remove" << endl;
+  cin >> DeleteID;
+
+  for (int j = 0; j < i; j++) {
+    Student *s = v[j];
+    if (DeleteID == (*s).id) {
+      cout << "Are you sure you want to remove " << (*s).FirstName << " " << (*s).LastName << " from the list? Type 'DELETE' to confirm." << endl;
+      cin.getline(ConfirmDelete, 6);
+      if (ConfirmDelete == ref) {
+	cout << (*s).FirstName << " " << (*s).LastName << " has been removed from the list." << endl;
+	delete s;
+	v.erase(v.begin()+j);
+      }
+      else {
+	cout << "Going back to action menu" << endl;
+	ACTION(i,v,s);
+      }
+    }
+  }
+}
+
+
 
 void ADD(int& i, vector<Student*> &v, Student *s) {
   cout << "First name?" << endl;
